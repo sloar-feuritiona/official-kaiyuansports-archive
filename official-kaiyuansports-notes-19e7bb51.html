@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>开元体育 · 杂志专题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef4f3;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      color: #1a2a2e;
+      padding: 1.5rem 1rem;
+    }
+
+    .grid-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+
+    /* hero 横幅卡片 */
+    .hero-card {
+      background: #1d4e5c;
+      color: #f2fcf9;
+      border-radius: 28px;
+      padding: 2.4rem 2rem;
+      box-shadow: 0 12px 24px -8px rgba(0, 40, 45, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      top: -30%;
+      right: -20%;
+      width: 220px;
+      height: 220px;
+      background: rgba(70, 170, 165, 0.18);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-card h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      line-height: 1.2;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card .sub {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-top: 0.4rem;
+      border-left: 4px solid #75cfc0;
+      padding-left: 1rem;
+      font-weight: 350;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card .meta-tag {
+      margin-top: 1rem;
+      background: #418a84;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      font-weight: 400;
+      display: inline-block;
+      color: #e9faf5;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 背景说明卡片 — 网格卡片风格 */
+    .bg-card {
+      background: #ffffffdd;
+      backdrop-filter: blur(2px);
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 2rem;
+      box-shadow: 0 4px 16px rgba(0, 20, 25, 0.04);
+      border: 1px solid #cee5e0;
+      transition: box-shadow 0.25s;
+    }
+
+    .bg-card:hover {
+      box-shadow: 0 8px 24px rgba(32, 100, 100, 0.08);
+    }
+
+    .bg-card h2 {
+      font-size: 1.7rem;
+      font-weight: 420;
+      color: #15535c;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.2px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .bg-card h2 span {
+      display: inline-block;
+      width: 6px;
+      height: 28px;
+      background: #5fbcb0;
+      border-radius: 10px;
+      margin-right: 8px;
+    }
+
+    .bg-card p {
+      margin-bottom: 1.2rem;
+      color: #1e3d44;
+    }
+
+    .bg-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight {
+      background: #e3f3f0;
+      padding: 0.05rem 0.3rem;
+      border-radius: 4px;
+      font-weight: 450;
+      color: #094d52;
+    }
+
+    /* 三段自然介绍网格 */
+    .triple-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem;
+      border: 1px solid #d5e9e5;
+      box-shadow: 0 2px 8px rgba(40, 100, 95, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -8px rgba(30, 90, 85, 0.12);
+    }
+
+    .info-card h3 {
+      font-size: 1.35rem;
+      font-weight: 440;
+      color: #17555b;
+      margin-bottom: 0.8rem;
+      border-bottom: 2px solid #b5dad2;
+      padding-bottom: 0.2rem;
+      display: inline-block;
+    }
+
+    .info-card p {
+      color: #213e44;
+    }
+
+    .info-card .mini-icon {
+      display: inline-block;
+      background: #5fbcb0;
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 50%;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    /* 页尾提示卡片 */
+    .footer-note {
+      background: #1d4e5c;
+      border-radius: 30px;
+      padding: 2rem 2.2rem;
+      color: #e2f5f0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: 0 8px 20px rgba(10, 40, 45, 0.2);
+      margin-top: 0.5rem;
+    }
+
+    .footer-note .left {
+      flex: 2 1 200px;
+    }
+
+    .footer-note .left p {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      opacity: 0.9;
+    }
+
+    .footer-note .right {
+      flex: 1 1 140px;
+      text-align: right;
+    }
+
+    .footer-note a {
+      color: #cbefe6;
+      text-decoration: none;
+      font-weight: 420;
+      border-bottom: 2px solid #6fc4b6;
+      padding-bottom: 2px;
+      transition: all 0.2s;
+      font-size: 1.2rem;
+    }
+
+    .footer-note a:hover {
+      color: white;
+      border-bottom-color: #bdf0e5;
+    }
+
+    .reminder-tag {
+      display: inline-block;
+      background: #32716e;
+      border-radius: 40px;
+      padding: 0.15rem 1.2rem;
+      font-size: 0.8rem;
+      color: #def7f0;
+      margin-top: 0.6rem;
+    }
+
+    /* 响应式 */
+    @media (min-width: 640px) {
+      .triple-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-card {
+        padding: 3rem 3rem;
+      }
+      .hero-card h1 {
+        font-size: 3.4rem;
+      }
+      .bg-card {
+        padding: 2.6rem 2.8rem;
+      }
+      .footer-note {
+        padding: 2.2rem 2.8rem;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .triple-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .hero-card h1 {
+        font-size: 3.8rem;
+      }
+      body {
+        padding: 2.8rem 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-card h1 {
+        font-size: 2rem;
+      }
+      .hero-card .sub {
+        font-size: 0.95rem;
+      }
+      .bg-card h2 {
+        font-size: 1.4rem;
+      }
+      .info-card {
+        padding: 1.4rem;
+      }
+      .footer-note {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+      .footer-note .right {
+        text-align: left;
+        width: 100%;
+      }
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(90deg, #b2d5ce, transparent);
+      margin: 0.8rem 0 1.2rem 0;
+      opacity: 0.5;
+    }
+
+    .small-meta {
+      color: #5f7f7c;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0.4rem 0 0.2rem 0;
+    }
+
+    ul li {
+      display: inline-block;
+      background: #dcece8;
+      padding: 0.1rem 1rem;
+      border-radius: 30px;
+      margin: 0.2rem 0.2rem;
+      font-size: 0.75rem;
+      color: #1b4b4d;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+
+    <!-- 首页横幅 hero -->
+    <div class="hero-card">
+      <h1>开元体育</h1>
+      <div class="sub">再次走进 · 持续关注 · 杂志式记录</div>
+      <div class="meta-tag">专题号 · 2025</div>
+    </div>
+
+    <!-- 背景说明卡片：为什么再次访问和收藏 -->
+    <div class="bg-card">
+      <h2><span></span> 重访与收藏的理由</h2>
+      <p>
+        一个网站的意义，往往在回访中沉淀。<span class="highlight">开元体育</span> 从创立之初就专注于运动视野的整理与分享，
+        每季内容都经过筛选与编排，像一本定期更新的杂志合辑。无论你是第一次打开，还是再次回来，
+        都能找到结构清晰的信息脉络。收藏这个站点，意味着你拥有了一扇随时可以推开的运动阅览窗口。
+      </p>
+      <p>
+        页面保持克制与干净的视觉语言，没有繁复弹窗，没有过度推送。你可以自由地跳转到感兴趣的部分，
+        也可以把这里当作一个安静的资料索引台。
+      </p>
+      <hr>
+      <div class="small-meta">背景阅读 · 站点理念 · 持续整理</div>
+      <ul>
+        <li>内容筛选</li>
+        <li>无干扰界面</li>
+        <li>收藏友好</li>
+      </ul>
+    </div>
+
+    <!-- 三段自然介绍：网格卡片 -->
+    <div class="triple-grid">
+      <div class="info-card">
+        <h3>📋 从浏览到熟悉</h3>
+        <p>
+          每次访问，你都会发现一些此前忽略的细节。<strong>开元体育</strong> 的目录结构按运动类型与专题划分，
+          特别适合反复翻阅。标记你感兴趣的页面，下次回来直接定位，节省时间。
+        </p>
+      </div>
+      <div class="info-card">
+        <h3>📌 持续关注的节奏</h3>
+        <p>
+          网站内容按周期更新，不是轰炸式发布，而是像一期一期专题那样自然出现。如果你愿意持续关注，
+          可以偶尔回来看看，不必担心错过紧急信息——这里没有催促，只有从容的展示。
+        </p>
+      </div>
+      <div class="info-card">
+        <h3>🔖 收藏即创造</h3>
+        <p>
+          把 <a href="https://official-kaiyuansports.com" style="color:#1d6a62; text-decoration: underline; text-underline-offset: 3px; font-weight: 500;">开元体育</a> 加入书签，相当于在信息海洋中锚定了一个干净坐标。
+          无论是研究运动趋势，还是查找过往资料，这个站点都能成为你个人的参考基点。
+        </p>
+        <p style="margin-top: 0.8rem; font-size: 0.9rem; color:#306b66;">
+          <span class="mini-icon"></span> 书签栏常驻入口
+        </p>
+      </div>
+    </div>
+
+    <!-- 页尾访问提示（句子自然嵌入链接） -->
+    <div class="footer-note">
+      <div class="left">
+        <p>如果你想再一次回到这个信息整理空间，可以直接记住名字「<a href="https://official-kaiyuansports.com" style="color:#cfeee6; border-bottom: 1px solid #6fc4b6;">开元体育</a>」。</p>
+        <p style="margin-top: 0.4rem; font-size: 0.9rem; opacity: 0.86;">页面内容保持独立编排，适合长期阅读与回溯。</p>
+        <span class="reminder-tag">杂志专题 · 持续关注</span>
+      </div>
+      <div class="right">
+        <span style="display: inline-block; background: #367a73; border-radius: 40px; padding: 0.2rem 1.4rem; color: #d7f3ec; font-size: 0.85rem;">再次访问</span>
+      </div>
+    </div>
+
+    <!-- 细小的 FAQ 摘要风格（融在网格下方） -->
+    <div style="background: transparent; padding: 0.3rem 0.2rem; display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; font-size: 0.8rem; color: #3b655f; border-top: 1px solid #c6ddd6; margin-top: 0.2rem;">
+      <span>💬 常见收录范围：运动观察 · 赛事整理 · 专题笔记</span>
+      <span>📅 内容节奏：按系列更新，非每日推送</span>
+    </div>
+
+  </div>
+</body>
+</html>
